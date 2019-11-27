@@ -5,7 +5,7 @@
         <ul id="completed-tasks">
             <li v-for="todo in completedTodos" :key="todo.id">
                 <label>{{todo.name}}</label>
-                <button class="restore">Restore</button>
+                <button class="restore" @click="restoreTodo(todo.id)">Restore</button>
                 <button class="delete">Delete</button>
             </li>
         </ul>
@@ -20,6 +20,13 @@
                 type: Array,
                 require: true
             },
+        },
+        methods: {
+            restoreTodo(todoId) {
+                let currentTodo = this.completedTodos.find(x => x.id === todoId);
+
+                this.$emit('restore-todo', currentTodo);
+            }
         },
     }
 </script>

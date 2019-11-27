@@ -10,6 +10,7 @@
                        :completedTodos="completedTodos"
                        @add-todo="onAddTodo"
                        @complete-todo="onCompleteTodo"
+                       @restore-todo="onRestoreTodo"
             >
             </component>
         </keep-alive>
@@ -62,6 +63,9 @@
             },
             onCompleteTodo(todo) {
                 todo.isCompleted = true;
+            },
+            onRestoreTodo(todo) {
+                todo.isCompleted = false;
             }
         },
     }
