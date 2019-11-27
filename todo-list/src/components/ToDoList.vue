@@ -3,8 +3,8 @@
         <h3>Todo</h3>
 
         <ul id="incomplete-tasks">
-            <li>
-                <label>Feed the Cat</label>
+            <li v-for="todo in todos" :key="todo.id">
+                <label>{{todo.name}}</label>
                 <button class="complete">Complete</button>
                 <button class="delete">Delete</button>
             </li>
@@ -14,7 +14,13 @@
 
 <script>
     export default {
-        name: "ToDoList"
+        name: "ToDoList",
+        props: {
+            todos: {
+                type: Array,
+                require: true
+            },
+        },
     }
 </script>
 

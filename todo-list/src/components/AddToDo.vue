@@ -8,7 +8,7 @@
 
 <script>
     export default {
-        name: "AddToDo"
+        name: "AddToDo",
     }
 </script>
 

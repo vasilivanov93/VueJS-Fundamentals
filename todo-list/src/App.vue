@@ -1,11 +1,11 @@
 <template>
     <div class="container">
-        <button @click="activeTab = 'AddToDo'">Add</button>
-        <button @click="activeTab = 'ToDoList'">ToDo</button>
-        <button @click="activeTab = 'CompletedToDo'">Complete</button>
+        <button @click="changeTab('AddToDo')">Add</button>
+        <button @click="changeTab('ToDoList')">ToDo</button>
+        <button @click="changeTab('CompletedToDo')">Complete</button>
 
         <keep-alive>
-            <component :is="activeTab">
+            <component :is="activeTab" :todos="todos">
 
             </component>
         </keep-alive>
@@ -13,9 +13,13 @@
 </template>
 
 <script>
+    // Components
     import AddToDo from "./components/AddToDo";
     import ToDoList from "./components/ToDoList";
     import CompletedToDo from "./components/CompletedToDo";
+
+    // Data
+    import {todos} from "./data/todos";
 
     export default {
         name: 'app',
@@ -27,7 +31,13 @@
         },
         data() {
             return {
-                activeTab: 'AddToDo'
+                activeTab: 'AddToDo',
+                todos
+            }
+        },
+        methods: {
+            changeTab(tabName) {
+                this.activeTab = tabName
             }
         },
     }
