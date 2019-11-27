@@ -1,12 +1,14 @@
 <template>
     <div class="container">
-        <button>Add</button>
-        <button>ToDo</button>
-        <button>Complete</button>
+        <button @click="activeTab = 'AddToDo'">Add</button>
+        <button @click="activeTab = 'ToDoList'">ToDo</button>
+        <button @click="activeTab = 'CompletedToDo'">Complete</button>
 
-      <AddToDo></AddToDo>
-      <ToDoList></ToDoList>
-      <CompletedToDo></CompletedToDo>
+        <keep-alive>
+            <component :is="activeTab">
+
+            </component>
+        </keep-alive>
     </div>
 </template>
 
@@ -17,12 +19,17 @@
 
     export default {
         name: 'app',
-      components: {CompletedToDo, ToDoList, AddToDo},
-      comments: {
-          AddToDo,
-          ToDoList,
-          CompletedToDo
-        }
+        components: {CompletedToDo, ToDoList, AddToDo},
+        comments: {
+            AddToDo,
+            ToDoList,
+            CompletedToDo
+        },
+        data() {
+            return {
+                activeTab: 'AddToDo'
+            }
+        },
     }
 </script>
 
