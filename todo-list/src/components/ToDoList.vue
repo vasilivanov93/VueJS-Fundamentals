@@ -7,14 +7,8 @@
                 <li v-for="todo in notCompletedTodos" :key="todo.id">
                     <label>{{todo.name}}</label>
                     <button class="complete" @click="completeTodo(todo.id)">Complete</button>
-                    <button class="delete">Delete</button>
+                    <button class="delete" @click="removeTodo(todo.id)">Delete</button>
                 </li>
-            </ul>
-        </template>
-
-        <template v-else>
-            <ul>
-                <li>No todo now</li>
             </ul>
         </template>
     </div>
@@ -27,13 +21,18 @@
             notCompletedTodos: {
                 type: Array,
                 require: true
-            },
+            }
         },
         methods: {
             completeTodo(todoId) {
                 let currentTodo = this.notCompletedTodos.find(x => x.id === todoId);
 
                 this.$emit('complete-todo', currentTodo);
+            },
+            removeTodo(todoId) {
+                let currentTodo = this.notCompletedTodos.find(x => x.id === todoId);
+
+                this.$emit('remove-todo', currentTodo);
             }
         },
     }

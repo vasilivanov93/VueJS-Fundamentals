@@ -11,6 +11,7 @@
                        @add-todo="onAddTodo"
                        @complete-todo="onCompleteTodo"
                        @restore-todo="onRestoreTodo"
+                       @remove-todo="onRemoveTodo"
             >
             </component>
         </keep-alive>
@@ -57,7 +58,7 @@
                 this.todos.push({
                     id: this.idTodo++,
                     name: todoName,
-                    isCompleted :false,
+                    isCompleted: false,
                     isEdit: false
                 });
             },
@@ -66,6 +67,9 @@
             },
             onRestoreTodo(todo) {
                 todo.isCompleted = false;
+            },
+            onRemoveTodo(todo) {
+                this.todos = this.todos.filter(x => x.id !== todo.id);
             }
         },
     }
