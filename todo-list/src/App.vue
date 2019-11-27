@@ -1,81 +1,104 @@
 <template>
-  <div class="container">
-    <button>Add</button>
-    <button>ToDo</button>
-    <button>Complete</button>
-  </div>
+    <div class="container">
+        <button>Add</button>
+        <button>ToDo</button>
+        <button>Complete</button>
+
+      <AddToDo></AddToDo>
+      <ToDoList></ToDoList>
+      <CompletedToDo></CompletedToDo>
+    </div>
 </template>
 
 <script>
+    import AddToDo from "./components/AddToDo";
+    import ToDoList from "./components/ToDoList";
+    import CompletedToDo from "./components/CompletedToDo";
 
-export default {
-  name: 'app'
-}
+    export default {
+        name: 'app',
+      components: {CompletedToDo, ToDoList, AddToDo},
+      comments: {
+          AddToDo,
+          ToDoList,
+          CompletedToDo
+        }
+    }
 </script>
 
 <style>
-  body {
-    background: #fff;
-    color: #333;
-    font-family: Lato, sans-serif;
-  }
-  .container {
-    display: block;
-    width: 400px;
-    margin: 100px auto 0;
-  }
-  ul {
-    margin: 0;
-    padding: 0;
-  }
-  li * {
-    float: left;
-  }
-  li,
-  h3 {
-    clear: both;
-    list-style: none;
-  }
-  input,
-  button {
-    outline: none;
-  }
-  button {
-    background: none;
-    border: 0px;
-    color: #888;
-    font-size: 15px;
-    width: 60px;
-    margin: 10px 0 0;
-    font-family: Lato, sans-serif;
-    cursor: pointer;
-  }
-  button:hover {
-    color: #333;
-  }
-  h3,
-  label[for="new-task"] {
-    color: #333;
-    font-weight: 700;
-    font-size: 15px;
-    border-bottom: 2px solid #333;
-    padding: 30px 0 10px;
-    margin: 0;
-    text-transform: uppercase;
-  }
-  input[type="text"] {
-    margin: 0;
-    font-size: 18px;
-    line-height: 18px;
-    height: 18px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    background: #fff;
-    border-radius: 6px;
-    font-family: Lato, sans-serif;
-    color: #888;
-  }
-  input[type="text"]:focus {
-    color: #333;
-  }
+    body {
+        background: #fff;
+        color: #333;
+        font-family: Lato, sans-serif;
+    }
+
+    .container {
+        display: block;
+        width: 400px;
+        margin: 100px auto 0;
+    }
+
+    ul {
+        margin: 0;
+        padding: 0;
+    }
+
+    li * {
+        float: left;
+    }
+
+    li,
+    h3 {
+        clear: both;
+        list-style: none;
+    }
+
+    input,
+    button {
+        outline: none;
+    }
+
+    button {
+        background: none;
+        border: 0px;
+        color: #888;
+        font-size: 15px;
+        width: 60px;
+        margin: 10px 0 0;
+        font-family: Lato, sans-serif;
+        cursor: pointer;
+    }
+
+    button:hover {
+        color: #333;
+    }
+
+    h3,
+    label[for="new-task"] {
+        color: #333;
+        font-weight: 700;
+        font-size: 15px;
+        border-bottom: 2px solid #333;
+        padding: 30px 0 10px;
+        margin: 0;
+        text-transform: uppercase;
+    }
+
+    input[type="text"] {
+        margin: 0;
+        font-size: 18px;
+        line-height: 18px;
+        height: 18px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        background: #fff;
+        border-radius: 6px;
+        font-family: Lato, sans-serif;
+        color: #888;
+    }
+
+    input[type="text"]:focus {
+        color: #333;
+    }
 </style>
