@@ -2,13 +2,21 @@
     <div>
         <h3>Todo</h3>
 
-        <ul id="incomplete-tasks">
-            <li v-for="todo in todos" :key="todo.id">
-                <label>{{todo.name}}</label>
-                <button class="complete">Complete</button>
-                <button class="delete">Delete</button>
-            </li>
-        </ul>
+        <template v-if="notCompletedTodos">
+            <ul id="incomplete-tasks">
+                <li v-for="todo in notCompletedTodos" :key="todo.id">
+                    <label>{{todo.name}}</label>
+                    <button class="complete" @click="completeTodo(todo.id)">Complete</button>
+                    <button class="delete">Delete</button>
+                </li>
+            </ul>
+        </template>
+
+        <template v-else>
+            <ul>
+                <li>No todo now</li>
+            </ul>
+        </template>
     </div>
 </template>
 
@@ -16,10 +24,17 @@
     export default {
         name: "ToDoList",
         props: {
-            todos: {
+            notCompletedTodos: {
                 type: Array,
                 require: true
             },
+        },
+        methods: {
+            completeTodo(todoId) {
+                let currentTodo = this.notCompletedTodos.find(x => x.id === todoId);
+
+                this.$emit('complete-todo', currentTodo);
+            }
         },
     }
 </script>

@@ -3,14 +3,8 @@
         <h3>Completed</h3>
 
         <ul id="completed-tasks">
-            <li>
-                <label>Go to Gym</label>
-                <button class="restore">Restore</button>
-                <button class="delete">Delete</button>
-            </li>
-
-            <li>
-                <label>Go to Store</label>
+            <li v-for="todo in completedTodos" :key="todo.id">
+                <label>{{todo.name}}</label>
                 <button class="restore">Restore</button>
                 <button class="delete">Delete</button>
             </li>
@@ -20,7 +14,13 @@
 
 <script>
     export default {
-        name: "CompletedToDo"
+        name: "CompletedToDo",
+        props: {
+            completedTodos: {
+                type: Array,
+                require: true
+            },
+        },
     }
 </script>
 
@@ -35,12 +35,14 @@
         padding: 20px 0;
         border-bottom: 1px solid #eee;
     }
+
     li > label {
         font-size: 18px;
         line-height: 40px;
         width: 237px;
         padding: 0 0 0 11px;
     }
+
     li > .delete:hover {
         color: #cf2323;
     }

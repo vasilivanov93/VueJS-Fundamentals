@@ -6,8 +6,10 @@
 
         <keep-alive>
             <component :is="activeTab"
-                       :todos="todos"
+                       :notCompletedTodos="notCompletedTodos"
+                       :completedTodos="completedTodos"
                        @add-todo="onAddTodo"
+                       @complete-todo="onCompleteTodo"
             >
             </component>
         </keep-alive>
@@ -38,6 +40,14 @@
                 idTodo: todos.length
             }
         },
+        computed: {
+            notCompletedTodos() {
+                return this.todos.filter(x => !x.isCompleted);
+            },
+            completedTodos() {
+                return this.todos.filter(x => x.isCompleted)
+            }
+        },
         methods: {
             changeTab(tabName) {
                 this.activeTab = tabName
@@ -49,6 +59,9 @@
                     isCompleted :false,
                     isEdit: false
                 });
+            },
+            onCompleteTodo(todo) {
+                todo.isCompleted = true;
             }
         },
     }
